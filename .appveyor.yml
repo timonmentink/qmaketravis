@@ -37,4 +37,4 @@ before_build:
 build_script:
   - '%make%'
   - cd %APPVEYOR_BUILD_FOLDER%-build/
-  - '%make% qmaketravis'
+  - '%make%'
