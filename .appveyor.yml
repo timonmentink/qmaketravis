@@ -37,7 +37,7 @@ before_build:
 build_script:
   - '%make%'
   - windeployqt %CONFIGURATION%\qmaketravis.exe --dir distrib
-	
+
   # Build the installer
   - set PATH=%PATH%;"C:\Program Files (x86)\Inno Setup 5"
   - ISCC /Q qmaketravis.iss
