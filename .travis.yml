@@ -39,7 +39,7 @@ script:
 
   # build library and binary
   - mkdir ./build && cd ./build
-  - qmake src/qmaketravis.pro
+  - qmake ../src/qmaketravis.pro
   - make
 
 notifications:
