@@ -43,6 +43,16 @@ after_build:
   - mklink %APPVEYOR_BUILD_FOLDER%\qmaketravis.exe %APPVEYOR_BUILD_FOLDER%-build\src\%CONFIGURATION%\qmaketravis.exe
 
 artifacts:
-  - path: qmaketravis.exe
-    name: Application  
+  - path: '*.exe'
+    name: application
+  
+deploy:
+  # Deploy to GitHub Releases
+  - provider: GitHub
+    artifact: application           # upload all NuGet packages to release assets
+    draft: false
+    prerelease: false
+    on:
+      branch: master                # release from master branch only
+      appveyor_repo_tag: true       # deploy on tag push only
   
