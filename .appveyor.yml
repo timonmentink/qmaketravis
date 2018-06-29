@@ -36,23 +36,13 @@ before_build:
 
 build_script:
   - '%make%'
-  
-after_build:
- # Add a link to the build output within the source directory. This is needed because AppVeyor does
- # not support extracting artifacts from out-of-source build directories. See 'artifacts' below.
-  - mklink %APPVEYOR_BUILD_FOLDER%\qmaketravis.exe %APPVEYOR_BUILD_FOLDER%-build\src\%CONFIGURATION%\qmaketravis.exe
+    windeployqt --qmldir qml %CONFIGURATION%\qmaketravis.exe --dir distrib
+	
+  # Build the installer
+  - set PATH=%PATH%;"C:\Program Files (x86)\Inno Setup 5"
+  - ISCC /Q qmaketravis.iss
 
-artifacts:
-  - path: '*.exe'
-    name: application
-  
-deploy:
-  # Deploy to GitHub Releases
-  - provider: GitHub
-    artifact: application           # upload all NuGet packages to release assets
-    draft: false
-    prerelease: false
-    on:
-      branch: master                # release from master branch only
-      appveyor_repo_tag: true       # deploy on tag push only
-  
+after_build:
+- ps: |
+    appveyor PushArtifact %CONFIGURATION%\qmaketravis.exe
+    appveyor PushArtifact C:\qmaketravis_win_setup.exe
