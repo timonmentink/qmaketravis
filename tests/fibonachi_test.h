@@ -5,7 +5,6 @@
 
 #include <fcntl.h>
 #include <errno.h>
-#include <unistd.h>
 
 extern "C" {
 #include "myfunc.h"
