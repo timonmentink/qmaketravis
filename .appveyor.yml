@@ -47,3 +47,6 @@ after_build:
     7z a -y %CONFIGURATION%-distrib.zip distrib &&
     appveyor PushArtifact %CONFIGURATION%-distrib.zip
     )
+
+test_script:
+  - %APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\tests.exe
