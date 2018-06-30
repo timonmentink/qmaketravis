@@ -36,12 +36,13 @@ before_build:
 
 build_script:
   - '%make%'
-  - windeployqt %CONFIGURATION%\qmaketravis.exe --dir distrib
 
   # Build the installer
   #- set PATH=%PATH%;"C:\Program Files (x86)\Inno Setup 5"
   #- ISCC /Q qmaketravis.iss
 
 after_build:
+  - windeployqt %CONFIGURATION%\qmaketravis.exe --dir distrib
+  - 7z a -y distrib.zip distrib
   - appveyor PushArtifact %CONFIGURATION%\qmaketravis.exe
-  #- appveyor PushArtifact C:\qmaketravis_win_setup.exe
+  - appveyor PushArtifact %CONFIGURATION%\distrib.zip
