@@ -49,4 +49,4 @@ after_build:
     )
 
 test_script:
-  - %APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\tests.exe
+  - '%APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\tests.exe'
