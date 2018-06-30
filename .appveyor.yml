@@ -42,8 +42,8 @@ build_script:
 
 after_build:
   - if [%CONFIGURATION%]==[release] (    
-    windeployqt %CONFIGURATION%\app\qmaketravis.exe --dir distrib &&
-    cp %CONFIGURATION%\app\qmaketravis.exe distrib &&
+    windeployqt app\%CONFIGURATION%\qmaketravis.exe --dir distrib &&
+    cp app\%CONFIGURATION%\qmaketravis.exe distrib &&
     7z a -y %CONFIGURATION%-distrib.zip distrib &&
     appveyor PushArtifact %CONFIGURATION%-distrib.zip
     )
