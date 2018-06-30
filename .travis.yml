@@ -37,7 +37,7 @@ install:
 
 script:
   - git submodule update --init --recursive
-  - coveralls --root . -E ".*external.*" -E ".*tests.*" -E ".+/moc_.+" -E ".+/ui_.+"
+  - coveralls --root . -E ".*external.*" -E ".*tests.*"
   # build library and binary
   - mkdir ./build && cd ./build
   - qmake ../qmake-gtest.pro
