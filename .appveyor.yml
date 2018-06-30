@@ -43,6 +43,6 @@ build_script:
 
 after_build:
   - windeployqt %CONFIGURATION%\qmaketravis.exe --dir distrib
-  - 7z a -y distrib.zip distrib
+  - 7z a -y %CONFIGURATION%-distrib.zip distrib
   - appveyor PushArtifact %CONFIGURATION%\qmaketravis.exe
-  - appveyor PushArtifact %CONFIGURATION%\distrib.zip
+  - appveyor PushArtifact %CONFIGURATION%-distrib.zip
