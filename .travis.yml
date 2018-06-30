@@ -14,7 +14,7 @@ matrix:
 before_install:
     - if [[ "$QT_BASE" = "510" && "$TRAVIS_OS_NAME" = "linux" ]]; then sudo add-apt-repository ppa:beineri/opt-qt-5.10.1-trusty -y; fi
     - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-        pip install --user cpp-coveralls
+        pip install --user cpp-coveralls;
         sudo apt-get update -qq;
       else
         brew update;
