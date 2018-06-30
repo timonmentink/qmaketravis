@@ -13,6 +13,7 @@ configuration:
   - release
 
 install:
+  - git submodule update --init --recursive
   - C:\cygwin\bin\find C:\Qt -maxdepth 2 -type d
   - '%QTDIR%\bin\qtenv2.bat'
   - qmake -v
@@ -28,7 +29,6 @@ install:
 
 before_build:
   # Prepare the out-of-source build directory.
-  - git submodule update --init --recursive
   - mkdir %APPVEYOR_BUILD_FOLDER%-build
   - cd %APPVEYOR_BUILD_FOLDER%-build
   - qmake -r -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
