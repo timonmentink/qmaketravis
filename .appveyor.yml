@@ -14,7 +14,6 @@ configuration:
 
 install:
   - git submodule update --init --recursive
-  - C:\cygwin\bin\find C:\Qt -maxdepth 2 -type d
   - '%QTDIR%\bin\qtenv2.bat'
   - qmake -v
   - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
@@ -49,5 +48,4 @@ after_build:
     )
 
 test_script:
-  - C:\cygwin\bin\find %APPVEYOR_BUILD_FOLDER%-build
   - '%APPVEYOR_BUILD_FOLDER%-build\tests\%CONFIGURATION%\tests.exe'
