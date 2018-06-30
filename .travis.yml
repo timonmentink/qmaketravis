@@ -12,6 +12,7 @@ matrix:
       env: QT_BASE=510
  
 before_install:
+    - pip install --user cpp-coveralls
     - if [[ "$QT_BASE" = "510" && "$TRAVIS_OS_NAME" = "linux" ]]; then sudo add-apt-repository ppa:beineri/opt-qt-5.10.1-trusty -y; fi
     - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
         sudo apt-get update -qq;
@@ -42,6 +43,10 @@ script:
   - qmake ../qmake-gtest.pro
   - make
   - ./tests/tests
+  
 
+after_success:
+  - coveralls --root . -E ".*external.*" -E ".*tests.*"
+  
 notifications:
 email: false
