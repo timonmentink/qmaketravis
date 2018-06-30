@@ -1,5 +1,5 @@
 version: '{branch}-{build}'
-image: Visual Studio 2017
+
 environment:
   matrix:
     # Tip: sed -nre 's|.*Qt/.*/|    - QTDIR: &|p' | tr '/' '\' | sort -nt. -k1.20,1 -k2,2 -k3
@@ -7,8 +7,6 @@ environment:
     - QTDIR: C:\Qt\5.10.1\msvc2013_64
     - QTDIR: C:\Qt\5.10.1\msvc2015
     - QTDIR: C:\Qt\5.10.1\msvc2015_64
-    - QTDIR: C:\Qt\5.10.1\msvc2017
-    - QTDIR: C:\Qt\5.10.1\msvc2017_64
 
 configuration:
   - debug
