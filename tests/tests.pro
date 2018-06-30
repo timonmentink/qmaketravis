@@ -16,10 +16,10 @@ LIBS += -lgcov
 
 DEFINES += INPUTDIR=\\\"$$PWD/input/\\\"
 
-HEADERS += ../src/myfunc.h \
+HEADERS += ../app/myfunc.h \
     fibonachi_test.h
 
 SOURCES +=     main.cpp \
-    ../src/myfunc.c
+    ../app/myfunc.c
 
-INCLUDEPATH += ../src
+INCLUDEPATH += ../app

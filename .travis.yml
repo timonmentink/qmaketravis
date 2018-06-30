@@ -39,8 +39,9 @@ script:
 
   # build library and binary
   - mkdir ./build && cd ./build
-  - qmake ../app/app.pro
+  - qmake ../qmake-gtest.pro
   - make
+  - ../tests/tests
 
 notifications:
 email: false

@@ -30,7 +30,7 @@ before_build:
   # Prepare the out-of-source build directory.
   - mkdir %APPVEYOR_BUILD_FOLDER%-build
   - cd %APPVEYOR_BUILD_FOLDER%-build
-  - qmake -r -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%/app
+  - qmake -r -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 
 build_script:
   - '%make%'
@@ -40,9 +40,12 @@ build_script:
   #- ISCC /Q qmaketravis.iss
 
 after_build:
-  - if [%CONFIGURATION%]==[release] (
-    windeployqt %CONFIGURATION%\app.exe --dir distrib &&
-    cp %CONFIGURATION%\app.exe distrib &&
+  - if [%CONFIGURATION%]==[release] (    
+    windeployqt %CONFIGURATION%\qmaketravis.exe --dir distrib &&
+    cp %CONFIGURATION%\qmaketravis.exe distrib &&
     7z a -y %CONFIGURATION%-distrib.zip distrib &&
     appveyor PushArtifact %CONFIGURATION%-distrib.zip
     )
+	
+test_script:
+  - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\tests.exe'	
