@@ -24,7 +24,7 @@ install:
   - if %QTDIR:msvc=%==%QTDIR% %make% --version
   - if not %QTDIR:msvc2013=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %ARCH%
   - if not %QTDIR:msvc2015=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %ARCH%
-  - if not %QTDIR:msvc2017=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio 16.0\VC\vcvarsall.bat" %ARCH%
+  - if not %QTDIR:msvc2017=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %ARCH%
   - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
   - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
 
@@ -44,6 +44,7 @@ build_script:
 after_build:
   - if [%CONFIGURATION%]==[release] (
     windeployqt %CONFIGURATION%\qmaketravis.exe --dir distrib &&
+    copy %CONFIGURATION%\qmaketravis.exe distrib
     7z a -y %CONFIGURATION%-distrib.zip distrib &&
     appveyor PushArtifact %CONFIGURATION%\qmaketravis.exe &&
     appveyor PushArtifact %CONFIGURATION%-distrib.zip
