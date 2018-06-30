@@ -50,4 +50,3 @@ after_build:
 
 test_script:
   - C:\cygwin\bin\find %APPVEYOR_BUILD_FOLDER%
-  - '%APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\tests.exe'
