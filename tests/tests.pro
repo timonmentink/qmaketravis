@@ -9,7 +9,6 @@ CONFIG -= qt
 # --coverage option is synonym for: -fprofile-arcs -ftest-coverage -lgcov
 QMAKE_CXXFLAGS += --coverage
 QMAKE_LFLAGS += --coverage
-LIBS += -lgcov
 
 DEFINES += INPUTDIR=\\\"$$PWD/input/\\\"
 
