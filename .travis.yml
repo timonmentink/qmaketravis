@@ -45,7 +45,7 @@ script:
   - ./app/qmaketravis
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
       cd ..;
-      coveralls;
+      coveralls -E ".*external.*" -E ".*tests.*" -E ".*build.*";
     fi
   
 notifications:
