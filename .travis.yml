@@ -37,14 +37,14 @@ install:
 
 script:
   - git submodule update --init --recursive
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-      coveralls --root . -E ".*external.*" -E ".*tests.*";
-    fi
   # build library and binary
   - mkdir ./build && cd ./build
   - qmake ../qmake-gtest.pro
   - make
   - ./tests/tests
- 
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+    coveralls --root . -E ".*external.*" -E ".*tests.*";
+    fi
+  
 notifications:
 email: false
