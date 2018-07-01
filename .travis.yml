@@ -10,7 +10,7 @@ matrix:
     - os: osx
       compiler: clang
       env: QT_BASE=510
-	  
+
 addons:
   sonarcloud:
     organization: "qmaketravisProject"
