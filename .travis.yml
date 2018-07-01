@@ -43,7 +43,7 @@ script:
   - make
   - ./tests/tests
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    coveralls;
+    coveralls --root ./app;
     fi
   
 notifications:
