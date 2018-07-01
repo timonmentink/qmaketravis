@@ -42,6 +42,7 @@ script:
   - qmake ../qmake-gtest.pro
   - make
   - ./tests/tests
+  - ./app/qmaketravis
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
       cd ..;
       coveralls;
