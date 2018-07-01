@@ -10,6 +10,12 @@ matrix:
     - os: osx
       compiler: clang
       env: QT_BASE=510
+	  
+addons:
+  sonarcloud:
+    organization: "qmaketravisProject"
+    token:
+      secure: $SONAR_TOKEN
  
 before_install:
     - if [[ "$QT_BASE" = "510" && "$TRAVIS_OS_NAME" = "linux" ]]; then sudo add-apt-repository ppa:beineri/opt-qt-5.10.1-trusty -y; fi
@@ -45,6 +51,8 @@ script:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
       cd ..;
       coveralls;
+      build-wrapper-linux-x86-64 --out-dir bw-output make clean all;
+      sonar-scanner;
     fi
   
 notifications:
