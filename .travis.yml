@@ -43,7 +43,8 @@ script:
   - make
   - ./tests/tests
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    coveralls --root ../ -E ".*external.*" -E ".*tests.*" -E ".*build.*";
+      cd ..;
+      coveralls;
     fi
   
 notifications:
