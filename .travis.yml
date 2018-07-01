@@ -27,6 +27,7 @@ install:
         sudo apt-get install -qq qt510-meta-minimal;
         source /opt/qt510/bin/qt510-env.sh;
       else
+        brew install gcov;
         brew install qt5;
         brew link --force qt5;
         export HOMEBREW_QT5_VERSION=$(brew list --versions qt5 | rev | cut -d' ' -f1 | rev);
@@ -43,7 +44,7 @@ script:
   - make
   - ./tests/tests
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    coveralls --root . -E ".*external.*" -E ".*tests.*";
+    coveralls --root ../ -E ".*external.*" -E ".*tests.*";
     fi
   
 notifications:
